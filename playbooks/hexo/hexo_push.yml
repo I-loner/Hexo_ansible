@@ -1,0 +1,19 @@
+---
+- hosts: baiduyun
+  remote_user: liukaitao
+  vars:
+     remote_hexo: /home/liukaitao/Desktop/I_loner
+  tasks:
+   - name: push new post {{name}}
+     copy:
+       src: "/home/jfn/桌面/myself/playbooks/hexo/articles/{{name}}.md"
+       dest: "{{remote_hexo}}/source/_posts/{{name}}.md"
+       force: yes
+       backup: no
+   - name: sync the {{name}} dir
+     synchronize:
+       mode: push
+       dest: "{{remote_hexo}}/source/_posts/{{name}}/"
+       src: "/home/jfn/桌面/myself/playbooks/hexo/articles/{{name}}/"
+   - name: deploy hexo
+     command: chdir={{remote_hexo}} ./deploy.sh

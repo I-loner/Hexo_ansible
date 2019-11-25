@@ -1,0 +1,13 @@
+---
+- hosts: baiduyun
+  remote_user: liukaitao
+  vars:
+     remote_hexo: /home/liukaitao/Desktop/I_loner
+  tasks:
+   - name: hexo new post
+     command: chdir={{remote_hexo}} hexo new post {{name}}
+   - name: new article {{name}} pull
+     fetch:
+       dest: /home/jfn/桌面/myself/playbooks/hexo/articles/
+       src: "{{remote_hexo}}/source/_posts/{{name}}.md"
+       flat: yes
