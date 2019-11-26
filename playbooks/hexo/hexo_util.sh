@@ -1,17 +1,23 @@
 #!/usr/bin/env bash
-echo "using hexo_util, Welcome! author: liukaitao"
+echo "[INFO] using hexo_util, Welcome! author: liukaitao"
 echo "============================================"
 
-read -p "pull or push:" function
+read -p "[ANSWER]pull or push:" function
 
 if [ ${function} = "push" ];then
 	# 获取最新文件名称
-	name=`ls -lt articles/ | awk '{print $9}'|sed -n '2p' |sed 's/'.md'//g'`
-	echo "name is ${name}"
+	name=`ls -lt articles/ | awk '{print $9}'|sed -n '2p' |sed 's/.md//g;/^$/d'`
+	echo "[INFO] name is ${name}"
+	read -p "[ANSWER] Are you sure: (yes or not)" answer
+	if [ ${answer} = "yes" ] || [ -z ${answer} ] ;then
+		echo "[INFO] get it !"	
+	else 
+		read -p "[ANSWER] 文件名称: " name
+	fi
 elif [ ${function} = "pull" ];then
-	read -p "文件名称为："  name
+	read -p "[ANSWER] 文件名称为："  name
 else
-	echo "please use pull or push ...."
+	echo "[INFO] please use pull or push ...."
         exit 0
 fi
 
