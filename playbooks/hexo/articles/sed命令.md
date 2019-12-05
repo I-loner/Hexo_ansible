@@ -8,7 +8,7 @@ categories:
 top: 100
 date: 2019-11-26 09:23:15
 ---
-
+![IP签名](https://tool.lu/netcard/)
 # `sed`命令
 `sed`处理文本时候是**逐行处理的**,读到匹配行就根据指令操作,不匹配就跳过
 
