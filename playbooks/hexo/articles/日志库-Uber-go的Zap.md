@@ -4,7 +4,7 @@ tags:
   - golang
 categories:
   - Golang
-  - backage
+  - package
 top: 100
 date: 2019-11-25 14:40:34
 updated: 2019-11-25 14:40:34
