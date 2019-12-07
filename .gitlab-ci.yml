@@ -1,6 +1,12 @@
-hexo_blog:
+stages:
+  - deploy
+
+Hexo_blog_runner:
+  stage: deploy
   script:
     - echo test
     - echo `pwd`
   only:
     - master
+  tags:
+    - Hexo_blog_runner
