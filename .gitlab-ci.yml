@@ -1,0 +1,8 @@
+hexo_blog:
+  tags:
+    - production
+  script:
+    - echo test
+    - echo `pwd`
+  only:
+    - master
