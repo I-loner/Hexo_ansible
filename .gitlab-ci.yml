@@ -6,6 +6,7 @@ Hexo_blog_runner:
   script:
     - echo test
     - echo `pwd`
+    - echo ${CI_COMMIT_SHORT_SHA}
   only:
     - master
   tags:
