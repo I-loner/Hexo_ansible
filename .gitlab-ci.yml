@@ -4,9 +4,12 @@ stages:
 Hexo_blog_runner:
   stage: deploy
   script:
-    - echo test
-    - echo `pwd`
     - echo ${CI_COMMIT_SHORT_SHA}
+    - cd /home/liukaitao/Hexo_blog/
+    - git pull
+    - cd playbooks/hexo
+    - name=`ls -lt articles/ | awk '{print $9}'| sed -n '2p'| sed 's/.md//g;/^&/d'`
+    - echo "name is ${name}"
   only:
     - master
   tags:

@@ -6,7 +6,7 @@
   tasks:
    - name: push new post {{name}}
      copy:
-       src: "/home/jfn/桌面/myself/playbooks/hexo/articles/{{name}}.md"
+       src: "articles/{{name}}.md"
        dest: "{{remote_hexo}}/source/_posts/{{name}}.md"
        force: yes
        backup: no
@@ -14,6 +14,6 @@
      synchronize:
        mode: push
        dest: "{{remote_hexo}}/source/_posts/{{name}}/"
-       src: "/home/jfn/桌面/myself/playbooks/hexo/articles/{{name}}/"
+       src: "articles/{{name}}/"
    - name: deploy hexo
      command: chdir={{remote_hexo}} ./deploy.sh
