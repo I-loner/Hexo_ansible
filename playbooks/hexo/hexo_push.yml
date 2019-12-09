@@ -10,10 +10,16 @@
        dest: "{{remote_hexo}}/source/_posts/{{name}}.md"
        force: yes
        backup: no
+   - name: ls the {{name}} dir
+     command: chdir=articles/ ls {{name}}
+     notify: sync the {{name}} dir
+   - name: deploy hexo
+     command: chdir={{remote_hexo}} ./deploy.sh
+
+  handlers:
    - name: sync the {{name}} dir
      synchronize:
        mode: push
        dest: "{{remote_hexo}}/source/_posts/{{name}}/"
        src: "articles/{{name}}/"
-   - name: deploy hexo
-     command: chdir={{remote_hexo}} ./deploy.sh
+   
